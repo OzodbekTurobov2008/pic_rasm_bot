@@ -69,10 +69,12 @@ async def users_count(message:Message):
     text = f"Botimizda {counts[0]} ta foydalanuvchi bor"
     await message.answer(text=text)
 
+
 @dp.message(F.text=="Reklama yuborish",IsBotAdminFilter(ADMINS))
 async def advert_dp(message:Message,state:FSMContext):
     await state.set_state(Adverts.adverts)
     await message.answer(text="Reklama yuborishingiz mumkin !")
+
 
 @dp.message(Adverts.adverts)
 async def send_advert(message:Message,state:FSMContext):
